@@ -1,0 +1,321 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    /* Light Gray / Off-White */
+    color: #333;
+    /* Dark Gray / Black */
+}
+
+.container {
+    flex: 1;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    color: #264653 !important;
+    /* Primary Heading Color - Cool Blue */
+}
+
+h4,
+h5,
+h6 {
+    color: #e76f51 !important;
+    /* Secondary Heading Color - Warm Red/Orange Blend */
+}
+
+/* Links */
+a {
+    color: #2a9d8f;
+    /* Teal/Aqua Blend */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Small decorative elements */
+.decorative-element {
+    color: #e9c46a;
+    /* Accent Color 1 */
+}
+
+/* Main Call-to-Action Button */
+.main-cta-btn {
+    background-color: #f4a261;
+    /* Warm Orange/Yellow */
+    color: #333;
+    /* Dark Gray / Black */
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.main-cta-btn:hover {
+    background-color: #e38f45;
+    cursor: pointer;
+}
+
+/* Secondary Button */
+.secondary-btn {
+    background-color: #2a9d8f;
+    /* Teal/Aqua Blend */
+    color: #f1f1f1;
+    /* Light Gray */
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.secondary-btn:hover {
+    background-color: #25897e;
+    cursor: pointer;
+}
+
+/* Navbar */
+.navbar {
+    height: 5rem;
+    background-color: #264653;
+    /* Cool Blue */
+}
+
+.navbar-brand,
+.nav-link {
+    color: #f1f1f1 !important;
+    /* White / Light Gray */
+    font-size: 1.05rem;
+}
+
+.f-info,
+.f-info a {
+    font-size: 0.95rem;
+    /* or 1rem */
+}
+
+.logo {
+    height: 8vh;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+
+/* Footer Container */
+footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.f-info {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* fixed from 'space-evenly' which is invalid on align-items */
+    height: 8rem;
+    /* background-color: #f8f9fa; */
+    /* Light Gray / Off-White */
+    color: #333;
+    /* Dark Gray / Black */
+}
+
+/* Footer Links */
+.f-info-links a {
+    text-decoration: none;
+    color: #2a9d8f;
+    /* Teal/Aqua Blend */
+    margin: 0 0.5rem;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+/* Layout for Sections */
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3rem 0;
+}
+
+/* Social Icons */
+.f-info-socials i {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    color: #e9c46a;
+    /* Accent Color 1 - Yellow */
+    transition: color 0.3s ease;
+}
+
+.f-info-socials i:hover {
+    color: #f4a261;
+    /* Accent Color 2 - Warm Orange */
+}
+
+@media (max-width: 576px) {
+    .f-info-socials i {
+        margin: 0 0.5rem;
+    }
+}
+
+/* General Typography */
+.listing-heading {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Listing Card Container */
+.listing-link {
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease-in-out;
+}
+
+.listing-link:hover {
+    text-decoration: none;
+    color: inherit;
+    transform: scale(1.015);
+}
+
+.card-body p,
+.card-body b {
+    text-decoration: none !important;
+}
+
+/* Card Design */
+.card {
+    border: none !important;
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Image */
+.card-img-top {
+    border-radius: 1rem 1rem 0 0 !important;
+    width: 100% !important;
+    height: 20rem;
+    object-fit: cover !important;
+}
+
+/* Card Overlay (for future hover content) */
+.card-img-overlay {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover .card-img-overlay {
+    opacity: 0.1;
+    background-color: #ffffff;
+}
+
+/* Card Body */
+.card-body {
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 0 0 1rem 1rem;
+}
+
+/* Card Text */
+.card-body b {
+    color: #264653;
+    /* Heading color */
+    font-size: 1.25rem;
+}
+
+.card-body p {
+    margin: 0.3rem 0 0;
+    color: #212529;
+    /* Dark Gray */
+    font-weight: 500;
+}
+
+/* show page */
+.show-card {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+}
+
+.show-img {
+    height: 30vh;
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0;
+}
+
+/* Buttons below the card */
+.btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    /* reduced from 2+ */
+}
+
+/* Button base style */
+.btns a,
+.btns button {
+    padding: 0.6rem 1.4rem;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Theme colors */
+.btns a {
+    background-color: #e76f51;
+    /* Coral accent */
+}
+
+.btns a:hover {
+    background-color: #d65a3b;
+}
+
+.btns button {
+    background-color: #264653;
+    /* Navy/teal */
+}
+
+.btns button:hover {
+    background-color: #1f3a3c;
+}
+
+/* edit page */
+.edit-page-heading {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.75rem;
+    text-transform: capitalize;
+}

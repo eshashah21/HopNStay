@@ -1,0 +1,12 @@
+# HopNStay Setup Instructions
+
+## Quick Start
+
+```bash
+npm init -y
+npm i express
+npm i ejs
+npm i mongoose
+npm i method-override
+npm i ejs-mate
+npm i joi
