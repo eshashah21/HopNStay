@@ -319,3 +319,8 @@ footer {
     font-size: 1.75rem;
     text-transform: capitalize;
 }
+
+/* review */
+.review-card{
+    border: 1px solid black !important; 
+}

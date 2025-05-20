@@ -16,7 +16,10 @@ const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
 const listing = require("./models/listing.js");
-const {listingSchema} = require("./schema.js");
+const { listingSchema } = require("./schema.js"); // to get listing data [demo data]
+
+const review = require("./models/review.js");
+const { reviewSchema } = require("./schema.js");
 
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
@@ -37,16 +40,26 @@ app.get("/", (req, res) => {
     res.end("hello");
 });
 
-const validateListing = (req, res, next) =>{
-    let {error} = listingSchema.validate(req.body);
-    
-    if(error){
+const validateListing = (req, res, next) => {
+    let { error } = listingSchema.validate(req.body);
+
+    if (error) {
         let errMsg = error.details.map((el) => el.message).join(",");
         throw new ExpressError(400, errMsg);
-    }else{
+    } else {
         next();
     }
 }
+
+const validateReview = (req, res, next) => {
+    let { error } = reviewSchema.validate(req.body);
+    if (error) {
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errMsg);
+    } else {
+        next();
+    }
+};
 
 //index route
 app.get("/listings", wrapAsync(async (req, res) => {
@@ -62,17 +75,17 @@ app.get("/listings/new", (req, res) => {
 //show route
 app.get("/listings/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
-    const foundListing = await listing.findById(id);
+    const foundListing = await listing.findById(id).populate("reviews");
     res.render("listings/show.ejs", { listing: foundListing });
 }));
 
 //create route (submit form)
 app.post("/listings", validateListing, wrapAsync(async (req, res, next) => {
-        
+
     // let {title, description, image, price, location, country} = req.body;
     const newListing = new listing(req.body.listing);
 
-    if(!newListing.description){
+    if (!newListing.description) {
         throw new ExpressError(400, "description is missing");
     }
 
@@ -102,6 +115,29 @@ app.delete("/listings/:id", wrapAsync(async (req, res) => {
     res.redirect("/listings");
 }));
 
+//post reviews route
+app.post("/listings/:id/reviews", validateReview, wrapAsync(async (req, res) => {
+    let foundListing = await listing.findById(req.params.id);
+    let newRev = new review(req.body.review);
+
+    foundListing.reviews.push(newRev);
+
+    await newRev.save();
+    await foundListing.save();
+
+    res.redirect(`/listings/${foundListing._id}`);
+}));
+
+//delete review route
+app.delete("/listings/:id/reviews/:reviewId", wrapAsync(async(req, res) => {
+    let {id, reviewId} = req.params;
+    
+    await listing.findByIdAndUpdate(id, {$pull: {reviews: reviewId}});
+    await review.findByIdAndDelete(reviewId);
+
+    res.redirect(`/listings/${id}`);
+}));
+
 // app.get("/testListning", async (req, res) => {
 //     let sampleListing = new listing({
 //         title: "My Home",
@@ -126,7 +162,7 @@ app.all(/.*/, (req, res, next) => {
 app.use((err, req, res, next) => {
     let { statusCode = 500, message = "Something went wrong" } = err;
     // res.render("error.ejs", {err});
-    res.status(statusCode).render("error.ejs", {message});
+    res.status(statusCode).render("error.ejs", { message });
     // res.status(statusCode).send(message);
 });
 
