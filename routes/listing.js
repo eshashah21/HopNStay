@@ -33,6 +33,12 @@ router.get("/new", (req, res) => {
 router.get("/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
     const foundListing = await listing.findById(id).populate("reviews");
+
+    if(!foundListing){
+        req.flash("error", "Listing you requested for does not exist!");
+        return res.redirect("/listings");
+    }
+
     res.render("listings/show.ejs", { listing: foundListing });
 }));
 
@@ -47,14 +53,20 @@ router.post("/", validateListing, wrapAsync(async (req, res, next) => {
     }
 
     await newListing.save();
+    req.flash("success", "New Listing Created");
     res.redirect("/listings");
-
 }));
 
 //edit route
 router.get("/:id/edit", wrapAsync(async (req, res) => {
     let { id } = req.params;
     const foundListing = await listing.findById(id);
+
+    if(!foundListing){
+        req.flash("error", "Listing you requested for does not exist!");
+        return res.redirect("/listings");
+    }
+    
     res.render("listings/edit.ejs", { listing: foundListing });
 }));
 
@@ -62,6 +74,7 @@ router.get("/:id/edit", wrapAsync(async (req, res) => {
 router.put("/:id", validateListing, wrapAsync(async (req, res) => {
     let { id } = req.params;
     await listing.findByIdAndUpdate(id, { ...req.body.listing });
+    req.flash("success", "Listing Updated Successfully");
     res.redirect(`/listings/${id}`);
 }));
 
@@ -69,6 +82,7 @@ router.put("/:id", validateListing, wrapAsync(async (req, res) => {
 router.delete("/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
     await listing.findByIdAndDelete(id);
+    req.flash("success", "Listing Deleted");
     res.redirect("/listings");
 }));
 
