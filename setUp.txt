@@ -12,3 +12,6 @@ npm i ejs-mate
 npm i joi
 npm i express-session
 npm i connect-flash
+npm i passport
+npm i passport-local
+npm i passport-local-mongoose
