@@ -31,7 +31,7 @@ Add reviews & ratings
 Input validation using Joi
 Persistent sessions with Passport.js
 
-📁 Project Structure
+## 📁 Project Structure
 HopNStay/
 │
 ├── models/
