@@ -88,6 +88,14 @@ a:hover {
     /* Cool Blue */
 }
 
+.navbar-collapse {
+    background-color: #264653 !important;
+}
+
+.navbar-toggler {
+    background-color: #f1f1f1 !important;
+}
+
 .navbar-brand,
 .nav-link {
     color: #f1f1f1 !important;
@@ -102,7 +110,13 @@ a:hover {
 }
 
 .logo {
-    height: 8vh;
+    height: 5vh;
+}
+
+@media (max-width: 1200px) {
+    .logo {
+        height: 4vh;
+    }
 }
 
 .fa-compass {

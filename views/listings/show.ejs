@@ -2,7 +2,7 @@
 
 <div class="row mt-4">
   <div class="col-12 text-center">
-    <h3>Showcase Your Place</h3>
+    <h3><%=listing.title%></h3>
   </div>
   <div class="card col-md-6 mx-auto show-card">
     <img
@@ -10,8 +10,8 @@
       class="card-img-top show-img"
       alt="listing_image"
     />
-    <div class="card-body mt-2">
-      <p class="card-text"><b><%=listing.title%></b></p>
+    <div class="card-body">
+      <p class="card-text"><i>Owned by: <%=listing.owner.username%></i></p>
       <p class="card-text"><%=listing.description%></p>
       <p class="card-text">
         &#8377;<%=listing.price.toLocaleString("en-IN") %>
@@ -20,6 +20,8 @@
       <p class="card-text"><%=listing.country%></p>
     </div>
   </div>
+
+  <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
   <div class="btns mb-5">
     <a href="/listings/<%=listing._id%>/edit" class="btn themed-btn edit-btn">
       Edit this listing
@@ -32,8 +34,11 @@
       <button class="btn themed-btn delete-btn">delete this listing</button>
     </form>
   </div>
-  <hr />
+  <%}%>
+
   <div class="col-8 offset-3 mb-3">
+    <% if(currUser) { %>
+      <hr />
     <h4>Leave a Review</h4>
     <form
       action="/listings/<%=listing._id%>/reviews"
@@ -69,6 +74,8 @@
       </div>
       <button class="btns btn themed-btn delete-btn">Submit</button>
     </form>
+    <%}%>
+
     <hr />
     <div>
       <h3>All Reviews</h3>
@@ -76,7 +83,7 @@
         <% for (review of listing.reviews){ %>
         <div class="card review-card col-5 ms-3 mb-3">
           <div class="card-body">
-            <h5 class="card-title">Jane Done</h5>
+            <h5 class="card-title">@<%=review.author.username%></h5>
             <p class="card-text"><%=review.comment%></p>
             <p class="card-text"><%=review.rating%> stars</p>
           </div>
@@ -84,7 +91,9 @@
             action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
             method="post"
           >
+          <% if(currUser && currUser._id.equals(review.author._id)) { %>
             <button class="btn themed-btn delete-btn">delete</button>
+            <%}%>
           </form>
         </div>
         <% } %>
