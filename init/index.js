@@ -21,7 +21,7 @@ async function seedDB() {
         const formattedData = initData.data.map((listing) => ({
             ...listing,
             image: listing.image.url, // Flatten image object to just the URL string
-            owner: "68358553b30816cb189ec143" // Add fixed owner ID
+            owner: "6836be196831b0774190c963" // Add fixed owner ID
         }));
 
         await Listing.insertMany(formattedData);
