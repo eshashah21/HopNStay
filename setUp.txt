@@ -15,4 +15,6 @@ npm i connect-flash
 npm i passport
 npm i passport-local
 npm i passport-local-mongoose
+npm i multer
 
+we have implemented full stack project using MVC Framework

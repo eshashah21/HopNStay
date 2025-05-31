@@ -3,7 +3,7 @@
 <div class="row mt-3">
   <div class="col-10 offset-1">
     <h3 class="listing-heading">Turn Your Place into Someone’s Getaway</h3>
-    <form action="/listings" method="post" class="needs-validation" novalidate>
+    <form action="/listings" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -38,14 +38,13 @@
       </div>
 
       <div class="mb-3">
-        <label for="image" class="form-label">Image URL/Link</label>
+        <label for="image" class="form-label">Upload Listing Image</label>
         <input
-          type="text"
+          type="file"
           name="listing[image]"
           class="form-control"
-          placeholder="https://example.com/image.jpg"
         />
-        <div class="valid-feedback">Image link looks good!</div>
+        <div class="valid-feedback">Image looks good!</div>
         <!-- <div class="invalid-feedback">Invalid image URL format.</div> -->
         <div class="form-text" id="image-default-msg">
           If left blank, a default image will be used.
