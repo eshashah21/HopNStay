@@ -20,7 +20,6 @@ async function seedDB() {
 
         const formattedData = initData.data.map((listing) => ({
             ...listing,
-            image: listing.image.url, // Flatten image object to just the URL string
             owner: "6836be196831b0774190c963" // Add fixed owner ID
         }));
 

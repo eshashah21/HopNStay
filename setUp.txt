@@ -16,5 +16,8 @@ npm i passport
 npm i passport-local
 npm i passport-local-mongoose
 npm i multer
+npm i  dotenv
+npm i cloudinary
+npm i multer-storage-cloudinary
 
 we have implemented full stack project using MVC Framework

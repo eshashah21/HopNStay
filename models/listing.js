@@ -13,9 +13,8 @@ const listingSchema = new Schema({
         required: true
     },
     image: {
-        type: String,
-        default: "https://dummyimage.com/600x400/cccccc/000000&text=No+Image",
-        set: (v) => v === "" ? "https://dummyimage.com/600x400/cccccc/000000&text=No+Image" : v
+        url: String,
+        filename: String,
     },
     price: {
         type: Number,
