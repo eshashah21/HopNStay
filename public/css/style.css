@@ -113,7 +113,7 @@ a:hover {
     height: 5vh;
 }
 
-.search-input{
+.search-input {
     border-radius: 25px !important;
     padding: 0.5rem 3rem 0.5rem 3rem !important;
 }
@@ -124,11 +124,11 @@ a:hover {
     border: 0.2px solid #ccc !important;
     border-radius: 25px !important;
     display: inline-flex !important;
-    align-items: center !important; 
+    align-items: center !important;
     padding: 0 1rem 0 1rem !important;
 }
 
-.search-btn i{
+.search-btn i {
     margin-right: 0.5rem !important;
 }
 
@@ -292,25 +292,26 @@ footer {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-  }
-  .filter {
+}
+
+.filter {
     margin-top: 2rem;
     text-align: center;
     margin-right: 2.5rem;
     opacity: 0.7;
-  }
+}
 
-  .filter:hover {
+.filter:hover {
     opacity: 1;
     cursor: pointer;
     transition: opacity 0.3s;
-  }
+}
 
-  .filter p{
+.filter p {
     font-size: 0.8rem;
-  }
+}
 
-  .tax-toggle{
+.tax-toggle {
     border: 1px solid black;
     border-radius: 1rem;
     height: 3.25rem;
@@ -318,11 +319,11 @@ footer {
     margin-left: 3rem;
     display: flex;
     align-items: center;
-  }
+}
 
-  .tax-info{
+.tax-info {
     display: none;
-  }
+}
 
 /* show page */
 .show-card {
@@ -390,6 +391,12 @@ footer {
 }
 
 /* review */
-.review-card{
-    border: 1px solid black !important; 
+.review-card {
+    border: 1px solid black !important;
+}
+
+/* map */
+#map {
+    height: 400px;
+    width: 80vh;
 }

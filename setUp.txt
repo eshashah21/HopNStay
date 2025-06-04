@@ -19,5 +19,6 @@ npm i multer
 npm i  dotenv
 npm i cloudinary
 npm i multer-storage-cloudinary
+npm i @mapbox/mapbox-sdk
 
 we have implemented full stack project using MVC Framework

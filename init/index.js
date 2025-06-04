@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 const Listing = require("../models/listing");
-const initData = require("./data.js"); // this gives you { data: [...] }
+const initData = require("./data.js");
+require("dotenv").config(); // For MAP_TOKEN
+
+const mapToken = process.env.MAP_TOKEN;
+const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
+const geocodingClient = mbxGeocoding({ accessToken: mapToken });
+
 
 main().then(() => {
     console.log("connected to DB");
@@ -18,10 +24,32 @@ async function seedDB() {
         await Listing.deleteMany({});
         console.log("Old listings deleted");
 
-        const formattedData = initData.data.map((listing) => ({
-            ...listing,
-            owner: "6836be196831b0774190c963" // Add fixed owner ID
-        }));
+        const formattedData = [];
+
+        for (let listing of initData.data) {
+            const geoData = await geocodingClient
+                .forwardGeocode({
+                    query: `${listing.location}, ${listing.country}`,
+                    limit: 1
+                })
+                .send();
+
+            const coordinates = geoData.body.features[0]?.geometry?.coordinates;
+
+            if (!coordinates) {
+                console.warn(`No coordinates found for: ${listing.location}, skipping`);
+                continue;
+            }
+
+            formattedData.push({
+                ...listing,
+                owner: "6836be196831b0774190c963", // Your fixed owner ID
+                geometry: {
+                    type: "Point",
+                    coordinates: coordinates
+                }
+            });
+        }
 
         await Listing.insertMany(formattedData);
         console.log("Data inserted successfully");
