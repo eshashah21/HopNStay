@@ -113,6 +113,25 @@ a:hover {
     height: 5vh;
 }
 
+.search-input{
+    border-radius: 25px !important;
+    padding: 0.5rem 3rem 0.5rem 3rem !important;
+}
+
+.search-btn {
+    background-color: #333 !important;
+    color: #ccc !important;
+    border: 0.2px solid #ccc !important;
+    border-radius: 25px !important;
+    display: inline-flex !important;
+    align-items: center !important; 
+    padding: 0 1rem 0 1rem !important;
+}
+
+.search-btn i{
+    margin-right: 0.5rem !important;
+}
+
 @media (max-width: 1200px) {
     .logo {
         height: 4vh;
@@ -268,6 +287,42 @@ footer {
     /* Dark Gray */
     font-weight: 500;
 }
+
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter {
+    margin-top: 2rem;
+    text-align: center;
+    margin-right: 2.5rem;
+    opacity: 0.7;
+  }
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+
+  .filter p{
+    font-size: 0.8rem;
+  }
+
+  .tax-toggle{
+    border: 1px solid black;
+    border-radius: 1rem;
+    height: 3.25rem;
+    padding: 1rem;
+    margin-left: 3rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .tax-info{
+    display: none;
+  }
 
 /* show page */
 .show-card {
