@@ -7,6 +7,7 @@ const mapToken = process.env.MAP_TOKEN;
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
+const dbUrl = process.env.ATLASDB_URL;
 
 main().then(() => {
     console.log("connected to DB");
@@ -16,7 +17,7 @@ main().then(() => {
 });
 
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/HopNStay");
+    await mongoose.connect(dbUrl);
 }
 
 async function seedDB() {
@@ -29,7 +30,7 @@ async function seedDB() {
         for (let listing of initData.data) {
             const geoData = await geocodingClient
                 .forwardGeocode({
-                    query: `${listing.location}, ${listing.country}`,
+                    query: listing.location,
                     limit: 1
                 })
                 .send();
@@ -43,7 +44,7 @@ async function seedDB() {
 
             formattedData.push({
                 ...listing,
-                owner: "6836be196831b0774190c963", // Your fixed owner ID
+                owner: "684123df4d510387968bfba2", // Your fixed owner ID
                 geometry: {
                     type: "Point",
                     coordinates: coordinates
