@@ -19,6 +19,8 @@ router.route("/")
 //new route (form)
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+router.get("/category/:category", wrapAsync(listingController.categoryFilter));
+    
 router.route("/:id")
     //show route
     .get(wrapAsync(listingController.showListing))

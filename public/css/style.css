@@ -292,23 +292,39 @@ footer {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    gap: 1rem; /* spacing between filters */
+    margin-bottom: 1.5rem;
+    justify-content: center; /* centers filters on wider screens */
 }
 
-.filter {
-    margin-top: 2rem;
+a.filter {
+    text-decoration: none;
+    color: inherit;
     text-align: center;
-    margin-right: 2.5rem;
     opacity: 0.7;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
 }
 
-.filter:hover {
+a.filter:hover,
+a.filter.active {
     opacity: 1;
-    cursor: pointer;
-    transition: opacity 0.3s;
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.filter i {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .filter p {
     font-size: 0.8rem;
+    margin: 0;
 }
 
 .tax-toggle {

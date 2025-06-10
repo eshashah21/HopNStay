@@ -8,6 +8,24 @@ module.exports.index = async (req, res) => {
     res.render("listings/index.ejs", { allListings });
 };
 
+module.exports.categoryFilter = async (req, res) => {
+    try {
+        const { category } = req.params;
+        const decodedCategory = decodeURIComponent(category);
+
+        const allListings = await Listing.find({ category: decodedCategory });
+
+        res.render("listings/index.ejs", {
+            allListings,
+            currentCategory: decodedCategory
+        });
+    } catch (err) {
+        req.flash("error", "Invalid category filter");
+        console.error(err);
+        res.redirect("/listings");
+    }
+};
+
 module.exports.renderNewForm = (req, res) => {
     // console.log(req.user);
     res.render("listings/new.ejs");

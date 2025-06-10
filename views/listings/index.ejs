@@ -1,53 +1,33 @@
 <% layout("/layouts/boilerplate") %>
 
-<div id="filters">
-  <div class="filter">
-    <div><i class="fa-solid fa-house-fire"></i></div>
-    <p>Trending</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-bed"></i></div>
-    <p>Rooms</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain-city"></i></div>
-    <p>Iconic Cities</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain-sun"></i></div>
-    <p>Hill</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-umbrella-beach"></i></div>
-    <p>Beach view</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-tractor"></i></div>
-    <p>Farm House</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-tents"></i></div>
-    <p>Camping</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-person-swimming"></i></div>
-    <p>Amazing pools</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-tree"></i></div>
-    <p>Forest House</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-regular fa-snowflake"></i></div>
-    <p>Arctic</p>
-  </div>
+<div id="filters" class="scrollable-filters">
+  <% const categories = [
+    { name: "Trending", icon: "fa-house-fire" },
+    { name: "Rooms", icon: "fa-bed" },
+    { name: "Iconic Cities", icon: "fa-mountain-city" },
+    { name: "Hill", icon: "fa-mountain-sun" },
+    { name: "Beach view", icon: "fa-umbrella-beach" },
+    { name: "Farm House", icon: "fa-tractor" },
+    { name: "Camping", icon: "fa-tents" },
+    { name: "Amazing pools", icon: "fa-person-swimming" },
+    { name: "Forest House", icon: "fa-tree" },
+    { name: "Arctic", icon: "fa-snowflake" }
+  ]; %>
+  
+  <% for (let cat of categories) { %>
+    <a href="/listings/category/<%= encodeURIComponent(cat.name) %>" class="filter">
+      <div><i class="fa-solid <%= cat.icon %>"></i></div>
+      <p><%= cat.name %></p>
+    </a>
+  <% } %>
+
   <div class="tax-toggle">
     <div class="form-check-reverse form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
       <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
     </div>
   </div>
- </div>
+</div>
 
             <h3 class="mt-3 listing-heading">Discover Your Next Getaway</h3>
 
