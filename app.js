@@ -43,7 +43,11 @@ main().then(() => {
 })
 
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(dbUrl, {
+        tls: true,
+        tlsInsecure: false,
+        serverSelectionTimeoutMS: 5000,
+    });
 }
 
 const store = MongoStore.create({
